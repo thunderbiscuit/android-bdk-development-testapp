@@ -1,13 +1,13 @@
 # Readme
-The purpose of this repository is to dry-run your local development setup for Android and the [bitcoindevkit](https://github.com/bitcoindevkit). It consists of 2 tasks: 
+The purpose of this repository is to dry-run your local development setup for Android and the [bitcoindevkit](https://github.com/bitcoindevkit). It consists of 2 potential tasks: 
 1. Building the app on the `master` branch of this repository
 2. Building the app on the `bdk-library` branch of this repository
 
 ## Requirements
 To accomplish the two tasks above you will need:
 1. Android Studio
-2. A phone with Android 6 OS or above (Android Marshmallow, API level 23) with USB debugging activated _OR_ an emulator on your development machine
-3. The bitcoindevkit library
+2. A phone with Android 6 or above (Android Marshmallow, API level 23) with USB debugging activated _OR_ an emulator on your development machine
+3. The bitcoindevkit library (for task 2)
 
 ### Android Studio
 The easiest way to install/uninstall Android Studio is through JetBrains' [Toolbox app](https://www.jetbrains.com/toolbox-app/), but any way you get a working Android Studio on your computer is fine. Install Android Studio `4.2.2` (latest stable release).
@@ -21,7 +21,7 @@ You can install emulators for a range of devices (that's the beauty of emulators
 ### Bitcoindevkit library
 The bitcoindevkit library for Android [bdk-jni](https://github.com/bitcoindevkit/bdk-jni) is not yet available on public repositories of Android libraries. This means that in order to acquire it, one must either (a) build it from source, or (b) find a pre-built version provided elsewhere.
 
-The second option is the easiest, and we have provided the library to you for that purpose. Once you have downloaded the library, you'll need to copy it in a place called your _local maven repository_, located at `~/.m2/repository` (create it if it doesn't exist). Simply copying the directory we provided there should result in the following directory structure:
+Once you have built/downloaded the library, you'll need to copy it in a place called your _local maven repository_, located at `~/.m2/repository` (create it if it doesn't exist). Simply copying the directory we provided there should result in the following directory structure:
 
 ```sh
 ~/.m2 
@@ -70,9 +70,3 @@ Once you have all of the above, you should be able to open this repository in An
 <center>
     <img src="./images/part-1.gif" width="300px"/>
 </center>
-
-
-
-
-
-
