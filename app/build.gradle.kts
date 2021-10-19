@@ -8,7 +8,7 @@ android {
     compileSdkVersion(30)
 
     defaultConfig {
-        applicationId = "org.summerofbitcoin.testapp"
+        applicationId = "com.goldenraven.testapp"
         minSdkVersion(23)
         targetSdkVersion(30)
         versionCode = 1

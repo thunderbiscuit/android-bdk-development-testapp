@@ -1,4 +1,4 @@
-package org.summerofbitcoin.testapp
+package com.goldenraven.testapp
 
 import org.junit.Test
 

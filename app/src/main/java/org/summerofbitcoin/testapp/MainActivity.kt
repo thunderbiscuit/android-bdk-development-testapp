@@ -3,7 +3,7 @@
  * Use of this source code is governed by the Apache 2.0 license that can be found in the ./LICENSE file.
  */
 
-package org.summerofbitcoin.testapp
+package com.goldenraven.testapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
