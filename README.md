@@ -19,46 +19,16 @@ Running your apps on a phone is more fun than using the emulators. Installing ap
 You can install emulators for a range of devices (that's the beauty of emulators) on any computer directly from Android Studio. Click on the dropdown menu (pictured below) and select `AVD Manager`. From there, follow the instructions and install an emulator of your choosing with a recent API level (Pixel 3 with API 30 is a good choice). Note that there is a known issue with emulators on Ubuntu OS which makes them very slow. In general if your local development machine runs on a Linux distro, consider using a phone for testing/debugging.
 
 ### Bitcoindevkit library
-The bitcoindevkit library for Android [bdk-android](https://github.com/bitcoindevkit/bdk-jni) is not yet available on public repositories of Android libraries. This means that in order to acquire it, one must either (a) build it from source, or (b) find a pre-built version provided elsewhere.
+The bitcoindevkit library for Android [bdk-android](https://github.com/bitcoindevkit/bdk-jni) is not yet available on public repositories of Android libraries. In order to use it, one must either (a) build it from source, or (b) pull it directly as a package form the github repository.
 
-To build from source, follow the instructions in the readme on the [bdk-jni repository](https://github.com/bitcoindevkit/bdk-jni). It requires the Rust toolchain, and is not for the faint of heart. Instead, I recommend downloading the required artifacts right from the [0.3.0 release page](https://github.com/bitcoindevkit/bdk-jni/releases/tag/v0.3.0).
+To build from source, follow the instructions in the readme on the [bdk-jni repository](https://github.com/bitcoindevkit/bdk-jni). It requires the Rust toolchain, and is not for the faint of heart. But the [the readme](https://github.com/bitcoindevkit/bdk-jni) is comprehensive and should lead to a successful build and the publication of the library in your local maven repository, which the app will be able to use easily.
 
-Once you have downloaded the library, you'll need to copy it in a place called your _local maven repository_, located at `~/.m2/repository` (create it if it doesn't exist). You'll need both the `bdk-jvm` and `bdk-android` artifacts in there, and they should result in the following directory structure:
-
+For most purposes, however, I recommend option (b); using our github repository as an additional maven repository. The only requirement for this is that you have a github account and a token activated with `read:package` permissions. In order to successfully download the library, you'll need to provide Gradle with your GitHub username and token the following by creating a file called `gradle.properties` in your `~/.gradle` directory and adding the following two keys:
 ```sh
-~/.m2 
-➜ tree
-.
-└── repository
-    └── org
-        └── bitcoindevkit
-            └── bdkjni
-                ├── bdk-android
-                │   ├── 0.3.0
-                │   │   ├── bdk-android-0.3.0.aar
-                │   │   ├── bdk-android-0.3.0.module
-                │   │   └── bdk-android-0.3.0.pom
-                │   └── maven-metadata-local.xml
-                └── bdk-jvm
-                    ├── 0.3.0
-                    │   ├── bdk-jvm-0.3.0.jar
-                    │   ├── bdk-jvm-0.3.0.module
-                    │   └── bdk-jvm-0.3.0.pom
-                    └── maven-metadata-local.xml
+# add credentials to ~/.gradle/gradle.properties file
+gpr.user=myusername
+gpr.key=mytoken
 ```
- 
-Note that for the build tool (Gradle) to find the library, we indicate to it that it should have a look into the "local Maven" repository for any of its dependencies (see `build.gradle.kts` line 17 in the `bdk-library` branch) 
-```kotlin:17
-allprojects {
-    repositories {
-        google()
-        mavenCentral()
-        mavenLocal()
-    }
-}
-```
-
-If you're familiar with the Rust toolchain, feel free to try option (a) and build from source. [The readme](https://github.com/bitcoindevkit/bdk-jni) is comprehensive and should lead to a successful build.
 
 ## Run the app
 Once you have all of the above, you should be able to open this repository in Android Studio, choose a device in the dropdown menu (emulator or USB connected hardware) and simply press 'run' (the green triangle). Both branches of this repository should build an app that will fire up on your phone, fully installed (in other words you can disconnect your phone and the app will keep working).
