@@ -40,7 +40,7 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.0.4")
 
     // bitcoindevkit 
-    implementation("org.bitcoindevkit.bdkjni:bdk-jni-debug:0.3.0")
+    implementation("org.bitcoindevkit.bdkjni:bdk-android:0.3.0")
 
     testImplementation("junit:junit:4.+")
     androidTestImplementation("androidx.test.ext:junit:1.1.3")
