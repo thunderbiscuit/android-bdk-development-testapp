@@ -19,16 +19,15 @@ Running your apps on a phone is more fun than using the emulators. Installing ap
 You can install emulators for a range of devices (that's the beauty of emulators) on any computer directly from Android Studio. Click on the dropdown menu (pictured below) and select `AVD Manager`. From there, follow the instructions and install an emulator of your choosing with a recent API level (Pixel 3 with API 30 is a good choice). Note that there is a known issue with emulators on Ubuntu OS which makes them very slow. In general if your local development machine runs on a Linux distro, consider using a phone for testing/debugging.
 
 ### Bitcoindevkit library
-The bitcoindevkit library for Android [bdk-android](https://github.com/bitcoindevkit/bdk-jni) is not yet available on public repositories of Android libraries. In order to use it, one must either (a) build it from source, or (b) pull it directly as a package form the github repository.
-
-To build from source, follow the instructions in the readme on the [bdk-jni repository](https://github.com/bitcoindevkit/bdk-jni). It requires the Rust toolchain, and is not for the faint of heart. But the [the readme](https://github.com/bitcoindevkit/bdk-jni) is comprehensive and should lead to a successful build and the publication of the library in your local maven repository, which the app will be able to use easily.
-
-For most purposes, however, I recommend option (b); using our github repository as an additional maven repository. The only requirement for this is that you have a github account and a token activated with `read:package` permissions. In order to successfully download the library, you'll need to provide Gradle with your GitHub username and token the following by creating a file called `gradle.properties` in your `~/.gradle` directory and adding the following two keys:
-```sh
-# add credentials to ~/.gradle/gradle.properties file
-gpr.user=myusername
-gpr.key=mytoken
+Simply add the bitcoindevkit android library as one of your dependencies using:
+```kotlin
+// Kotlin DSL
+dependencies {
+    implementation("org.bitcoindevkit:bdk-android:0.5.1")
+}
 ```
+
+The source code for the library is here: [bdk-kotlin](https://github.com/bitcoindevkit/bdk-kotlin). 
 
 ## Run the app
 Once you have all of the above, you should be able to open this repository in Android Studio, choose a device in the dropdown menu (emulator or USB connected hardware) and simply press 'run' (the green triangle). Both branches of this repository should build an app that will fire up on your phone, fully installed (in other words you can disconnect your phone and the app will keep working).
@@ -38,7 +37,6 @@ Once you have all of the above, you should be able to open this repository in An
 </center>
 
 ## Expected output
-
 <center>
     <img src="./images/part-1.gif" width="300px"/>
 </center>
