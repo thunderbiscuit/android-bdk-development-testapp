@@ -5,12 +5,12 @@ plugins {
 
 android {
 
-    compileSdkVersion(30)
+    compileSdkVersion(31)
 
     defaultConfig {
         applicationId = "com.goldenraven.testapp"
         minSdkVersion(23)
-        targetSdkVersion(30)
+        targetSdkVersion(31)
         versionCode = 1
         versionName = "v1.0.0"
 
@@ -40,7 +40,7 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.0.4")
 
     // bitcoindevkit 
-    implementation("org.bitcoindevkit.bdkjni:bdk-android:0.3.0")
+    implementation("org.bitcoindevkit:bdk-android:0.5.1")
 
     testImplementation("junit:junit:4.+")
     androidTestImplementation("androidx.test.ext:junit:1.1.3")
